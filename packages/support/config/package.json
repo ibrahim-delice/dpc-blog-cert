@@ -1,0 +1,22 @@
+{
+  "name": "@turbo-blog/config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "eslint",
+    "tsconfig",
+    "jest"
+  ],
+  "scripts": {
+    "clean": "yarn rimraf .turbo && yarn rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "eslint": "^8.23.1",
+    "eslint-config-next": "^12.0.3",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0"
+  }
+}

@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Text, TextTypes } from './Text'
+
+<Meta title="Common/Text" component={Text} />
+
+export const TemplateSingle = (args) => <Text {...args} />
+export const TemplateAll = () => (
+  <>
+    {Object.keys(TextTypes)
+      .filter((t) => isNaN(Number(t)))
+      .map((type) => (
+        <Text key={type} type={type} text={type} />
+      ))}
+  </>
+)
+
+# Text Component
+
+<Canvas>
+  <Story
+    name="Primary"
+    component={Text}
+    args={{ type: 'body', text: 'Change type and text below' }}
+  >
+    {TemplateSingle.bind({})}
+  </Story>
+</Canvas>
+
+Here are all available text types with their names:
+
+<Story name="All types">{TemplateAll.bind({})}</Story>
