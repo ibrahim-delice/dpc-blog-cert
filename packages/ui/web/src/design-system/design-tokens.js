@@ -13,6 +13,11 @@ const colors = {
     medium: tailwindDefaultColors.gray[500],
     light: tailwindDefaultColors.gray[300],
   },
+  accent: {
+    default: tailwindDefaultColors.purple[500],
+    light: tailwindDefaultColors.purple[300],
+    disabled: tailwindDefaultColors.purple[100],
+  },
 }
 
 const colorsList = Object.keys(colors)
