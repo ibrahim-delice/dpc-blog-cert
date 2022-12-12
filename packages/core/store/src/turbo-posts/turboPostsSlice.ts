@@ -13,19 +13,17 @@ export const turboPostsSlice = createSlice({
   name: 'turboPostsSlice',
   initialState: turboPostsInitialState,
   reducers: {
-    toggleSelectedTag: ({ selectedTags }, action: PayloadAction<string>) => {
+    toggleSelectedTag: (state, action: PayloadAction<string>) => {
       const { payload } = action
-      const newState = [...selectedTags]
+      const { selectedTags } = state
 
-      const matchIndex = newState.indexOf(payload)
+      const matchIndex = selectedTags.indexOf(payload)
 
       if (matchIndex > -1) {
-        newState.splice(matchIndex, 1)
+        selectedTags.splice(matchIndex, 1)
       } else {
-        newState.push(payload)
+        selectedTags.push(payload)
       }
-
-      selectedTags = newState
     },
     clearSelectedTags: (state) => {
       state.selectedTags = []

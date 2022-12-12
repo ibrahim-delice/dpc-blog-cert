@@ -2,20 +2,13 @@ import Head from 'next/head'
 import { ITurboPost } from '@turbo-blog/types'
 import { GetStaticProps } from 'next'
 import dummyposts from '../../util/dummy-posts'
-import { TurboPostsList } from '@turbo-blog/web-ui'
-import { useRouter } from 'next/router'
+import TurboPostsFilterableList from '../../containers/features/turbo-posts/TurboPostsFilterableList/TurboPostsFilterableList'
 
 interface ITurboPostsProps {
   posts: Array<ITurboPost>
 }
 
 const TurboPosts = ({ posts }: ITurboPostsProps) => {
-  const router = useRouter()
-
-  const handlePostRoute = (post: ITurboPost) => {
-    router.push(`${router.asPath}/${post.id}`)
-  }
-
   return (
     <>
       <Head>
@@ -23,12 +16,7 @@ const TurboPosts = ({ posts }: ITurboPostsProps) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <h1 className="text-6xl mb-10">Turbo posts</h1>
-      <TurboPostsList
-        emptyMessage="Empty posts.."
-        onClick={handlePostRoute}
-        posts={posts}
-      />
-      <div>{JSON.stringify(posts, null, 2)}</div>
+      <TurboPostsFilterableList posts={posts} />
     </>
   )
 }
