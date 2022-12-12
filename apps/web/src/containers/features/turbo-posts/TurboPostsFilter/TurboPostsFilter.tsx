@@ -6,11 +6,11 @@ import {
 import { IFilter, ITurboPost } from '@turbo-blog/types'
 import { TurboPostsFilter as UITurboPostsFilter } from '@turbo-blog/web-ui'
 
-interface ITurboPostsFilterProps {
+export interface ITurboPostsFilterProps {
   posts: ITurboPost[]
 }
 
-const TurboPostsFilter = (props: ITurboPostsFilterProps) => {
+export const TurboPostsFilter = (props: ITurboPostsFilterProps) => {
   const { posts } = props
 
   const selectedTags = useAppSelector((state) => state.turboPosts.selectedTags)
@@ -28,18 +28,24 @@ const TurboPostsFilter = (props: ITurboPostsFilterProps) => {
 
   const uniqueTags = new Set(tags)
 
-  const mappedTags = Array.from(uniqueTags)
-    .map((tag) => {
-      const isSelected = selectedTags.some((selectedTag) =>
-        selectedTag.includes(tag),
-      )
+  const mappedTags: IFilter[] =
+    uniqueTags.size > 0
+      ? Array.from(uniqueTags)
+          .map((tag) => {
+            const isSelected = selectedTags.some(
+              (selectedTag) => selectedTag === tag,
+            )
 
-      return {
-        title: tag,
-        selected: isSelected,
-      }
-    })
-    .sort((a, b) => a.title.localeCompare(b.title))
+            return {
+              title: tag ?? '',
+              selected: isSelected,
+            }
+          })
+          .sort((a, b) =>
+            a.title && b.title ? a.title.localeCompare(b.title) : 0,
+          )
+      : []
+
   return (
     <UITurboPostsFilter
       filters={mappedTags}
@@ -48,5 +54,3 @@ const TurboPostsFilter = (props: ITurboPostsFilterProps) => {
     />
   )
 }
-
-export default TurboPostsFilter

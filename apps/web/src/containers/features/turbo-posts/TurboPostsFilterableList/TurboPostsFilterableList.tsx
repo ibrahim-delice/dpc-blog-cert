@@ -7,11 +7,13 @@ import { IFilter, ITurboPost } from '@turbo-blog/types'
 import { TurboPostsFilter, TurboPostsList } from '@turbo-blog/web-ui'
 import router from 'next/router'
 
-interface ITurboPostsFilterableListProps {
+export interface ITurboPostsFilterableListProps {
   posts: ITurboPost[]
 }
 
-const TurboPostsFilterableList = (props: ITurboPostsFilterableListProps) => {
+export const TurboPostsFilterableList = (
+  props: ITurboPostsFilterableListProps,
+) => {
   const { posts } = props
   const dispatch = useAppDispatch()
   const selectedTags = useAppSelector((state) => state.turboPosts.selectedTags)
@@ -29,8 +31,10 @@ const TurboPostsFilterableList = (props: ITurboPostsFilterableListProps) => {
   }
 
   const filtered = selectedTags.length
-    ? posts.filter((post) =>
-        selectedTags.every((selectedTag) => post.tags.includes(selectedTag)),
+    ? posts.filter(({ tags }) =>
+        tags && tags.length
+          ? selectedTags.every((selectedTag) => tags.includes(selectedTag))
+          : false,
       )
     : posts
 
@@ -38,18 +42,23 @@ const TurboPostsFilterableList = (props: ITurboPostsFilterableListProps) => {
 
   const uniqueTags = new Set(tags)
 
-  const mappedTags = Array.from(uniqueTags)
-    .map((tag) => {
-      const isSelected = selectedTags.some((selectedTag) =>
-        selectedTag.includes(tag),
-      )
+  const mappedTags: IFilter[] =
+    uniqueTags.size > 0
+      ? Array.from(uniqueTags)
+          .map((tag) => {
+            const isSelected = selectedTags.some(
+              (selectedTag) => selectedTag === tag,
+            )
 
-      return {
-        title: tag,
-        selected: isSelected,
-      }
-    })
-    .sort((a, b) => a.title.localeCompare(b.title))
+            return {
+              title: tag ?? '',
+              selected: isSelected,
+            }
+          })
+          .sort((a, b) =>
+            a.title && b.title ? a.title.localeCompare(b.title) : 0,
+          )
+      : []
 
   return (
     <>
@@ -67,5 +76,3 @@ const TurboPostsFilterableList = (props: ITurboPostsFilterableListProps) => {
     </>
   )
 }
-
-export default TurboPostsFilterableList

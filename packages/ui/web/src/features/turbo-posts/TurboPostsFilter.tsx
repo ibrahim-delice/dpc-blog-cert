@@ -24,14 +24,16 @@ export const TurboPostsFilter = (props: ITurboPostsFilter) => {
     <div className={containerClassNames}>
       {filters.length ? (
         <div className={filterContainerClassNames}>
-          {filters.map((filter, index) => (
-            <Chip
-              {...filter}
-              key={filter.title + index}
-              onClick={() => onToggle?.(filter)}
-              selected={filter.selected}
-            />
-          ))}
+          {filters.map((filter, index) =>
+            filter.title ? (
+              <Chip
+                {...filter}
+                key={filter.title + index}
+                onClick={() => onToggle?.(filter)}
+                selected={filter.selected}
+              />
+            ) : null,
+          )}
         </div>
       ) : null}
 

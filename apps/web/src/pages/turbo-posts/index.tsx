@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { ITurboPost } from '@turbo-blog/types'
 import { GetStaticProps } from 'next'
 import dummyposts from '../../util/dummy-posts'
-import TurboPostsFilterableList from '../../containers/features/turbo-posts/TurboPostsFilterableList/TurboPostsFilterableList'
+import { TurboPostsFilterableList } from '../../containers/features/turbo-posts/TurboPostsFilterableList/TurboPostsFilterableList'
 
 interface ITurboPostsProps {
   posts: Array<ITurboPost>
