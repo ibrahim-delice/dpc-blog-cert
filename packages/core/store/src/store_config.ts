@@ -1,4 +1,5 @@
 import { exampleApiSlice } from '@turbo-blog/example-api'
+import { turboPostsApiSlice } from '@turbo-blog/turbo-post-api'
 import exampleSlice from './example/exampleSlice'
 import turboPostsSlice from './turbo-posts/turboPostsSlice'
 
@@ -13,6 +14,7 @@ export const reducers = {
   // Add all api slices
   //-----------------------------------------------------------
   [exampleApiSlice.reducerPath]: exampleApiSlice.reducer,
+  [turboPostsApiSlice.reducerPath]: turboPostsApiSlice.reducer,
 }
 
 //-----------------------------------------------------------
