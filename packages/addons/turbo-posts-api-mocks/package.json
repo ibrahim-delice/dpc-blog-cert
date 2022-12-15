@@ -1,5 +1,5 @@
 {
-  "name": "@turbo-blog/api-mocks",
+  "name": "@turbo-blog/turbo-posts-api-mocks",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -12,19 +12,17 @@
   ],
   "scripts": {
     "test": "jest --passWithNoTests",
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "build-api": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react --onSuccess 'yarn tsc --emitDeclarationOnly --declarationDir dist'",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --onSuccess 'yarn tsc --emitDeclarationOnly --declarationDir dist'",
     "lint": "eslint src --fix",
     "clean": "yarn clean:build && yarn clean:modules",
     "clean:modules": "yarn rimraf node_modules",
     "clean:build": "yarn rimraf dist && yarn rimraf .turbo"
   },
   "dependencies": {
-    "@turbo-blog/types": "*",
-    "@turbo-blog/example-api-mocks": "*",
-    "@turbo-blog/turbo-posts-api-mocks": "*",
-    "msw": "^0.36.8"
+    "msw": "^0.36.8",
+    "@turbo-blog/turbo-post-api": "*",
+    "@turbo-blog/types": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.14",

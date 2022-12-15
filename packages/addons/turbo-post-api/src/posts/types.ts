@@ -1,5 +1,8 @@
 export interface ITurboPostsResult {
   posts: Array<ITurboPostResult>
+  total: number
+  skip: number
+  limit: number
 }
 
 export interface ITurboPostResult {
