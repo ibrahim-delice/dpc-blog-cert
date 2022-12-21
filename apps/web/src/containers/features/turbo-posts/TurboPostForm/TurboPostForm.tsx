@@ -1,5 +1,5 @@
 import { TurboPostForm as UITurboPostForm } from '@turbo-blog/web-ui'
-import { KeyboardEvent } from 'react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 
 interface IData {
@@ -48,6 +48,14 @@ export const TurboPostForm = (props: ITurboPostFormProps) => {
     replace({ value: key.currentTarget.value })
   }
 
+  const handleContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setValue('content', event.target.value)
+  }
+
+  const handleHeading = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue('heading', event.target.value)
+  }
+
   const tags = getValues('tags')
     ?.map((tag) => tag.value)
     .join()
@@ -56,13 +64,14 @@ export const TurboPostForm = (props: ITurboPostFormProps) => {
 
   return (
     <UITurboPostForm
-      setValue={setValue}
+      onChangeContent={handleContent}
+      onChangeHeading={handleHeading}
+      onChangeTags={handleTags}
       isSubmitting={formState.isSubmitting}
       onSubmit={handleSubmit((data) => {
         onSubmit(data)
         reset()
       })}
-      onTags={handleTags}
       tags={tags}
     />
   )

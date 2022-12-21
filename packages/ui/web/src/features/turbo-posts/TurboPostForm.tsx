@@ -1,16 +1,24 @@
 import { Button, TextArea, TextInput } from 'common'
-import { BaseSyntheticEvent, KeyboardEvent } from 'react'
+import { BaseSyntheticEvent, ChangeEvent, KeyboardEvent } from 'react'
 
 export interface ITurboPostFormProps {
   onSubmit: (e?: BaseSyntheticEvent<object, any, any>) => Promise<void>
   isSubmitting: boolean
-  setValue: (name: string, value: string) => void
-  onTags: (key: KeyboardEvent<HTMLInputElement>) => void
+  onChangeContent: (event: ChangeEvent<HTMLTextAreaElement>) => void
+  onChangeHeading: (event: ChangeEvent<HTMLInputElement>) => void
+  onChangeTags: (key: KeyboardEvent<HTMLInputElement>) => void
   tags: string
 }
 
 export const TurboPostForm = (props: ITurboPostFormProps) => {
-  const { onSubmit, isSubmitting, setValue, onTags, tags } = props
+  const {
+    onSubmit,
+    isSubmitting,
+    onChangeContent,
+    onChangeHeading,
+    onChangeTags,
+    tags,
+  } = props
 
   return (
     <form
@@ -19,24 +27,18 @@ export const TurboPostForm = (props: ITurboPostFormProps) => {
     >
       <label>
         Heading:
-        <TextInput
-          onChange={(event) => setValue('heading', event.target.value)}
-          required
-        />
+        <TextInput onChange={onChangeHeading} required />
       </label>
       <label>
         Tags:
         <div>
           <p>{tags}</p>
-          <TextInput name="tags" onKeyUp={onTags} required />
+          <TextInput name="tags" onKeyUp={onChangeTags} required />
         </div>
       </label>
       <label>
         Content:
-        <TextArea
-          name="content"
-          onChange={(event) => setValue('content', event.target.value)}
-        />
+        <TextArea name="content" onChange={onChangeContent} />
       </label>
 
       <Button type="submit" disabled={isSubmitting}>
