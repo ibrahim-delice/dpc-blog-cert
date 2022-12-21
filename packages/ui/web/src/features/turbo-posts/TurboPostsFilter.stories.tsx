@@ -52,12 +52,14 @@ const Template: ComponentStory<typeof TurboPostsFilter> = (args) => {
   const handleClear = () => setFilters([])
 
   return (
-    <TurboPostsFilter {...args} onClear={handleClear} onToggle={handleToggle} />
+    <TurboPostsFilter
+      filters={filters}
+      onClear={handleClear}
+      onToggle={handleToggle}
+    />
   )
 }
 
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  filters: initialFilters,
-}
+Default.args = {}

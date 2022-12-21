@@ -17,15 +17,16 @@
     "deploy:netlify": "netlify deploy --build -p"
   },
   "dependencies": {
-    "@turbo-blog/api-mocks": "*",
     "@turbo-blog/api": "*",
+    "@turbo-blog/api-mocks": "*",
     "@turbo-blog/example-api": "*",
     "@turbo-blog/store": "*",
     "@turbo-blog/types": "*",
     "@turbo-blog/web-ui": "*",
     "next": "^12.2.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
