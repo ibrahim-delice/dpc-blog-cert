@@ -1,6 +1,5 @@
 import { extendedTurboPostsApiSlice, useGetPostQuery } from '@turbo-blog/api'
 import { makeStore, wrapper } from '@turbo-blog/store'
-import { ITurboPost } from '@turbo-blog/types'
 import { Button, TurboPost as UITurboPost } from '@turbo-blog/web-ui'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
