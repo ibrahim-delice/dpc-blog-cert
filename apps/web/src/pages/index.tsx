@@ -3,6 +3,7 @@ import React from 'react'
 import { Text, PageLayout } from '@turbo-blog/web-ui'
 import { useAppSelector, selectExampleValue } from '@turbo-blog/store'
 import { useGetTodosQuery } from '@turbo-blog/api'
+import Link from 'next/link'
 
 const IndexPage: NextPage = () => {
   //get a value from global state
@@ -13,6 +14,7 @@ const IndexPage: NextPage = () => {
 
   return (
     <PageLayout>
+      <Link href="/turbo-posts">Go to Turbo posts</Link>
       <Text type="h1" bottomMargin={'large'}>
         This is DPC Next RTKQ
       </Text>

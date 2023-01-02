@@ -23,6 +23,7 @@
   "dependencies": {
     "@turbo-blog/types": "*",
     "@turbo-blog/example-api-mocks": "*",
+    "@turbo-blog/turbo-posts-api-mocks": "*",
     "msw": "^0.36.8"
   },
   "devDependencies": {

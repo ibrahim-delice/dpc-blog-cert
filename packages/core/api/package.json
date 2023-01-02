@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@turbo-blog/types": "*",
-    "@turbo-blog/example-api": "*"
+    "@turbo-blog/example-api": "*",
+    "@turbo-blog/turbo-post-api": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.14",

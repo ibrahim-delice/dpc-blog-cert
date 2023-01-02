@@ -8,7 +8,7 @@
     "rootDir": "./src",
     "baseUrl": "./src"
   },
-  "exclude": ["node_modules", "src/__test__/**/*", "src/**/spec*"],
+  "exclude": ["node_modules", "src/__test__/**/*", "src/**/spec*", "dist/**/*"],
   "extends": "@turbo-blog/config/tsconfig/base.json",
   "include": ["src"]
 }

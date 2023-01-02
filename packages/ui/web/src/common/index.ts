@@ -1,3 +1,6 @@
 export * from './Button'
 export * from './Text'
 export * from './TextButton'
+export * from './Chip'
+export * from './TextInput'
+export * from './TextArea'

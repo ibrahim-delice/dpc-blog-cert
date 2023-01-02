@@ -1,5 +1,7 @@
 # Project: @turbo-blog
 
+
+
 Based on DPC Turbo Starter Project: _RTKQ_
 
 It contains a _NextJS_ App with a UI Library package. As well as packages for Typescript definitions and Redux toolkit. It also containg examples of using RTK Query for API fetching.
